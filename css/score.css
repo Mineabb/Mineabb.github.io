@@ -1,0 +1,11 @@
+.score-input.invalid-score {
+    border: 2px solid #dc2626;
+
+    background: #fef2f2;
+}
+
+.score-input:focus {
+    outline: none;
+
+    border-color: #2563eb;
+}

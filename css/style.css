@@ -1,0 +1,491 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        "Noto Sans Khmer",
+        Arial,
+        sans-serif;
+
+    background: #f4f6f9;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.page {
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 6px;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+#loginButton {
+    width: 100%;
+
+    background: #2563eb;
+}
+
+#loginButton:hover {
+    background: #1d4ed8;
+}
+
+#saveScoreButton {
+    background: #16a34a;
+}
+
+#saveScoreButton:hover {
+    background: #15803d;
+}
+
+#logoutButton {
+    background: #dc2626;
+}
+
+#logoutButton:hover {
+    background: #b91c1c;
+}
+
+#loginMessage {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* =========================
+   SCORE PAGE
+========================= */
+
+#scorePage {
+    padding: 30px;
+    background: #f4f6f9;
+}
+
+.score-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* Header */
+
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.score-header h1 {
+    margin: 0;
+}
+
+.score-header p {
+    margin-top: 5px;
+    color: #666;
+}
+
+
+/* Filters */
+
+.score-filters {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+
+    padding: 20px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.filter-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+}
+
+.filter-group input, select {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+}
+
+/* =========================
+   STUDENT TABLE
+========================= */
+
+.student-table-container {
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.08);
+
+    /* Scroll students, not the whole page */
+    max-height: 500px;
+
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+
+#studentTable {
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+
+/* Table cells */
+
+#studentTable th,
+#studentTable td {
+    padding: 12px;
+
+    border-bottom: 1px solid #eee;
+
+    text-align: left;
+}
+
+
+/* Sticky header */
+
+#studentTable thead th {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+
+    background: #f8fafc;
+
+    font-weight: 600;
+
+    border-bottom: 2px solid #ddd;
+}
+
+
+/* Keep header above everything */
+
+#studentTable thead {
+    position: relative;
+
+    z-index: 20;
+}
+
+
+/* Score input */
+
+#studentTable input[type="number"] {
+    width: 90px;
+
+    padding: 8px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+}
+
+.student-photo {
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.no-photo {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eee;
+
+    border-radius: 50%;
+
+    color: #999;
+}
+
+.score-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 20px;
+}
+
+
+
+.student-photo,
+.no-photo {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    transition: transform 0.25s ease;
+
+    transform-origin: center center;
+
+    cursor: zoom-in;
+}
+.student-photo {
+    object-fit: cover;
+}
+
+.no-photo {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: zoom-in;
+}
+
+.photo-zoomed {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.photo-zoomed {
+    transform: scale(1);
+
+    cursor: zoom-out;
+
+    z-index: 10;
+
+    position: relative;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    /* Score Page */
+
+    #scorePage {
+        padding: 10px;
+    }
+
+
+    .score-container {
+        width: 100%;
+    }
+
+
+    /* Header */
+
+    .score-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .score-header h1 {
+        font-size: 24px;
+    }
+
+
+    .score-header p {
+        font-size: 14px;
+    }
+
+
+    #logoutButton {
+        width: auto;
+        flex-shrink: 0;
+        padding: 9px 12px;
+    }
+
+
+    /* Filters */
+
+    .score-filters {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        padding: 15px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .filter-group input,
+    .filter-group select {
+        font-size: 16px;
+
+        padding: 11px;
+    }
+
+
+    /* Student Table */
+
+    .student-table-container {
+        max-height: 500px;
+
+        overflow-x: auto;
+        overflow-y: auto;
+
+        border-radius: 8px;
+    }
+
+
+    #studentTable {
+        min-width: 650px;
+    }
+
+
+    #studentTable th,
+    #studentTable td {
+        padding: 9px;
+    }
+
+
+    /* Photo */
+
+    .student-photo,
+    .no-photo {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    /* Score input */
+
+    #studentTable input[type="number"] {
+        width: 75px;
+
+        padding: 8px;
+
+        font-size: 16px;
+    }
+
+
+    /* Save button */
+
+    .score-actions {
+        margin-top: 15px;
+    }
+
+
+    #saveScoreButton {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    #saveScoreButton i {
+        display: inline-block;
+        flex-shrink: 0;
+    }
+
+}
